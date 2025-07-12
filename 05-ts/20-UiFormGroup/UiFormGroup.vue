@@ -22,7 +22,7 @@ const hintStyle = computed(() => props.showHint ? "form-group__hint form-group__
 <template>
   <div class="form-group">
     <div class="form-group__label-wrapper">
-      <label :for=props.for class="form-group__label">
+      <label :for="props.for" class="form-group__label">
         <slot name="label">{{ label }}</slot>
       </label>
       <div class="form-group__description">
