@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, type Slot } from 'vue';
+import { type Slot } from 'vue';
 
 const props = defineProps<{
   for?: string,
@@ -15,8 +15,6 @@ defineSlots<{
   label?: Slot,
   description?: Slot,
 }>()
-
-const hintStyle = computed(() => props.showHint ? "form-group__hint form-group__hint" : "form-group__hint form-group__hint--invalid")
 </script>
 
 <template>
@@ -32,7 +30,7 @@ const hintStyle = computed(() => props.showHint ? "form-group__hint form-group__
     <div class="form-group__control">
       <slot />
     </div>
-    <div v-if="props.hint !== undefined" :class=hintStyle>{{ invalid || showHint ? hint : "" }}</div>
+    <div v-if="props.hint !== undefined" class="form-group__hint" :class="props.invalid ? 'form-group__hint--invalid' : 'form-group__hint'">{{ invalid || showHint ? hint : "" }}</div>
   </div>
 </template>
 

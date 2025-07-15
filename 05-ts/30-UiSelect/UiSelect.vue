@@ -1,13 +1,13 @@
-<script setup lang="ts" generic="T">
+<script setup lang="ts" generic="T extends string">
 import { defineModel } from 'vue'
 
-const selected = defineModel<string>({ required: true })
+const modelValue = defineModel<T>({ required: true })
 
 const props = defineProps<{ options: { text: string; value: T }[] }>()
 </script>
 
 <template>
-  <select v-model="selected" class="select">
+  <select v-model="modelValue" class="select">
     <option v-for="option in options" :key="option.value" :value="option.value">{{ option.text }}</option>
   </select>
 </template>
